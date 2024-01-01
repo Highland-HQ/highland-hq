@@ -2,19 +2,49 @@ import { Link, NavLink } from "@remix-run/react";
 import {
   NavigationMenu,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from "~/components/ui/navigation-menu";
 import { Button } from "~/components/ui/button";
-import { Search, ShoppingBag, User } from "lucide-react";
+import { Search, ShoppingBag } from "lucide-react";
 
 import logo from "public/images/highland-logo-black.png";
 import { UserDropdown } from "./user-dropdown";
+import { useEffect, useRef, useState } from "react";
 
 export const Nav = () => {
+  const [isHidden, setIsHidden] = useState(false);
+  const lastScrollTop = useRef(0);
+
+  const handleScroll = () => {
+    const currentScroll = window.scrollY;
+
+    if (currentScroll > lastScrollTop.current) {
+      setIsHidden(true);
+    } else {
+      setIsHidden(false);
+    }
+    lastScrollTop.current = currentScroll;
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const navStyle = {
+    top: isHidden ? "-100%" : "0",
+    transition: "top 0.5s ease-in-out",
+  };
+
   return (
-    <NavigationMenu className="flex flex-col max-w-screen py-2 gap-2 sticky top-0 bg-background">
+    <NavigationMenu
+      style={navStyle}
+      className="flex flex-col max-w-screen py-2 gap-2 bg-background fixed w-full border-b border-border"
+    >
       <div className="flex items-center justify-between w-full container">
         <div>
           <Button size="sm" variant="ghost">

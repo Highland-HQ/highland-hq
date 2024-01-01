@@ -88,7 +88,7 @@ export const HomeHeroSection = () => {
       <CarouselContent>
         {heroCarouselContent.map((item, index) => (
           <CarouselItem key={index} className="relative">
-            <div className="w-full h-[65vh] overflow-hidden flex justify-center items-center">
+            <div className="w-full h-[75vh] overflow-hidden flex justify-center items-center">
               <img
                 className="object-cover h-full min-w-full"
                 src={item.imageUrl}
