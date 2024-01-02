@@ -1,4 +1,4 @@
-import { Link, NavLink } from "@remix-run/react";
+import { Link } from "@remix-run/react";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -11,6 +11,7 @@ import { Search, ShoppingBag } from "lucide-react";
 import logo from "public/images/highland-logo-black.png";
 import { UserDropdown } from "./user-dropdown";
 import { useEffect, useRef, useState } from "react";
+import { StorefrontCart } from "../shared/cart";
 
 export const Nav = () => {
   const [isHidden, setIsHidden] = useState(false);
@@ -55,9 +56,7 @@ export const Nav = () => {
           <img src={logo} alt="Highland Logo" className="h-8" />
         </div>
         <div className="flex items-center justify-end">
-          <Button size="sm" variant="ghost">
-            <ShoppingBag />
-          </Button>
+          <StorefrontCart />
           <UserDropdown />
         </div>
       </div>

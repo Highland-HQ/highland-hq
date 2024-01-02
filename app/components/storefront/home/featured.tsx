@@ -9,13 +9,20 @@ import image4 from "public/images/products/product4.jpg";
 
 export const HomeFeaturedSection = () => {
   return (
-    <section className="container mt-8">
-      <h2 className="font-serif text-4xl font-bold mb-4">Popular Products</h2>
-      <Tabs defaultValue="womens">
-        <TabsList className="mb-8">
-          <TabsTrigger value="womens">Womens</TabsTrigger>
-          <TabsTrigger value="mens">Mens</TabsTrigger>
-        </TabsList>
+    <section className="container my-12">
+      <h2 className="font-serif text-4xl font-bold mb-4 text-center">
+        Popular Products
+      </h2>
+      <Tabs
+        defaultValue="womens"
+        className="flex flex-col items-center justify-center"
+      >
+        <div>
+          <TabsList className="mb-8">
+            <TabsTrigger value="womens">Womens</TabsTrigger>
+            <TabsTrigger value="mens">Mens</TabsTrigger>
+          </TabsList>
+        </div>
         <TabsContent value="womens">
           <div className="grid grid-cols-4 gap-4">
             <div>

@@ -11,7 +11,7 @@ import Autoplay from "embla-carousel-autoplay";
 
 import image1 from "public/images/image1.jpg";
 import image2 from "public/images/image2.jpg";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type HeroCarouselContentPosition = "left" | "right" | "center";
 
@@ -49,8 +49,11 @@ const heroCarouselContent: HeroCarouselContent[] = [
 
 export const HomeHeroSection = () => {
   const [api, setApi] = useState<CarouselApi>();
-  const [count, setCount] = useState(0);
+  const [_, setCount] = useState(0);
   const [current, setCurrent] = useState(0);
+  const [parallaxOffsets, setParallaxOffsets] = useState<number[]>([]);
+
+  const carouselRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!api) {
@@ -65,10 +68,31 @@ export const HomeHeroSection = () => {
     });
   }, [api]);
 
+  useEffect(() => {
+    window.addEventListener("scroll", handleParallax);
+
+    return () => {
+      window.removeEventListener("scroll", handleParallax);
+    };
+  }, []);
+
   const goToSlide = (i: number) => {
     if (api) {
       api.scrollTo(i);
     }
+  };
+
+  const handleParallax = () => {
+    const scrollPosition = window.scrollY;
+
+    const newOffsets = heroCarouselContent.map((_, index) => {
+      // Ensure even the first element (index 0) has a non-zero offset
+      // The offset for the first image will be 'scrollPosition * 0.3'
+      // Subsequent images will have increasingly larger offsets
+      return scrollPosition * 0.3 + scrollPosition * 0.1 * index;
+    });
+
+    setParallaxOffsets(newOffsets);
   };
 
   return (
@@ -84,6 +108,7 @@ export const HomeHeroSection = () => {
       opts={{
         loop: true,
       }}
+      ref={carouselRef}
     >
       <CarouselContent>
         {heroCarouselContent.map((item, index) => (
@@ -93,11 +118,14 @@ export const HomeHeroSection = () => {
                 className="object-cover h-full min-w-full"
                 src={item.imageUrl}
                 alt={item.title}
+                style={{
+                  transform: `translateY(${parallaxOffsets[index] || 0}px)`,
+                }}
               />
             </div>
 
             <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 flex flex-col justify-center items-center">
-              <div className="container">
+              <div className="container flex flex-col items-center justify-center">
                 <h1 className="font-serif font-extrabold text-primary-foreground text-xl md:text-6xl">
                   {item.title}
                 </h1>
