@@ -11,7 +11,7 @@ import { Search, ShoppingBag } from "lucide-react";
 import logo from "public/images/highland-logo-black.png";
 import { UserDropdown } from "./user-dropdown";
 import { useEffect, useRef, useState } from "react";
-import { StorefrontCart } from "../shared/cart";
+import { StorefrontBag } from "../shared/bag";
 
 export const Nav = () => {
   const [isHidden, setIsHidden] = useState(false);
@@ -48,7 +48,7 @@ export const Nav = () => {
     >
       <div className="flex items-center justify-between w-full container">
         <div>
-          <Button size="sm" variant="ghost">
+          <Button size="icon" variant="ghost">
             <Search />
           </Button>
         </div>
@@ -56,7 +56,7 @@ export const Nav = () => {
           <img src={logo} alt="Highland Logo" className="h-8" />
         </div>
         <div className="flex items-center justify-end">
-          <StorefrontCart />
+          <StorefrontBag />
           <UserDropdown />
         </div>
       </div>

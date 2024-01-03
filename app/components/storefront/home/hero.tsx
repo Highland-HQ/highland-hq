@@ -31,18 +31,16 @@ const defaultHeroJustification: Record<"justify", HeroCarouselContentPosition> =
 const heroCarouselContent: HeroCarouselContent[] = [
   {
     ...defaultHeroJustification,
-    imageUrl: image1,
-    title: "The Silly Guy Collection",
-    description:
-      "This here is the silly guy collection, come take a look for yourself!",
+    imageUrl: image2,
+    title: "Sample Collection Title Here",
+    description: "This is the sample collection title's matching description.",
     buttonProps: { variant: "secondary", size: "lg" },
   },
   {
     ...defaultHeroJustification,
-    imageUrl: image2,
-    title: "The Sandwich Shop Collection",
-    description:
-      "Everything in this collection belongs in a damn sandwich shop, god is good!",
+    imageUrl: image1,
+    title: "Sample Collection Title Here",
+    description: "This is the sample collection title's matching description.",
     buttonProps: { variant: "secondary", size: "lg" },
   },
 ];
@@ -86,10 +84,7 @@ export const HomeHeroSection = () => {
     const scrollPosition = window.scrollY;
 
     const newOffsets = heroCarouselContent.map((_, index) => {
-      // Ensure even the first element (index 0) has a non-zero offset
-      // The offset for the first image will be 'scrollPosition * 0.3'
-      // Subsequent images will have increasingly larger offsets
-      return scrollPosition * 0.3 + scrollPosition * 0.1 * index;
+      return scrollPosition * 0.15 + scrollPosition * 0.1 * index;
     });
 
     setParallaxOffsets(newOffsets);

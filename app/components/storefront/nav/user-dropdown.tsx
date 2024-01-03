@@ -17,7 +17,7 @@ interface UserDropdownProps {
 // CHECK IF USER IS SIGNED IN TO RENDER DIFFERENT ITEMS
 export const UserDropdown = ({
   triggerVariant = "ghost",
-  triggerSize = "sm",
+  triggerSize = "icon",
 }: UserDropdownProps) => {
   return (
     <DropdownMenu>
