@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { Link } from "@remix-run/react";
 import {
   NavigationMenu,
@@ -6,12 +7,13 @@ import {
   navigationMenuTriggerStyle,
 } from "~/components/ui/navigation-menu";
 import { Button } from "~/components/ui/button";
-import { Search, ShoppingBag } from "lucide-react";
+
+import { Search } from "lucide-react";
+
+import { UserDropdown } from "./user-dropdown";
+import { StorefrontBag } from "./bag";
 
 import logo from "public/images/highland-logo-black.png";
-import { UserDropdown } from "./user-dropdown";
-import { useEffect, useRef, useState } from "react";
-import { StorefrontBag } from "../shared/bag";
 
 export const Nav = () => {
   const [isHidden, setIsHidden] = useState(false);

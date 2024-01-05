@@ -1,11 +1,11 @@
-import type { MetaFunction } from "@remix-run/node";
-import { HomeFeaturedSection } from "~/components/storefront/home/featured";
-import { HomeHeroSection } from "~/components/storefront/home/hero";
-import { Nav } from "~/components/storefront/nav/nav";
-import { HomeCollectionFeature } from "~/components/storefront/shared/collection-feature";
+import { type MetaFunction } from "@remix-run/node";
+
+import { HomeHeroSection } from "./components/hero";
+import { HomeFeaturedSection } from "./components/featured";
+import { HomeCollectionFeature } from "./components/collection-feature";
+import { HomeMailingList } from "./components/mailing-list";
 
 import image from "public/images/image2.jpg";
-import { HomeMailingList } from "~/components/storefront/shared/mailing-list";
 
 export const meta: MetaFunction = () => {
   return [
@@ -17,7 +17,6 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   return (
     <>
-      <Nav />
       <HomeHeroSection />
       <HomeFeaturedSection />
       <HomeCollectionFeature
