@@ -1,5 +1,4 @@
 import { SupabaseClient } from "@supabase/supabase-js";
-import { toast } from "sonner";
 
 export type HighlandAuthResponse = {
   name: string;
@@ -10,15 +9,20 @@ export const handleEmailLogin = async (
   supabase: SupabaseClient,
   email: string,
   password: string
-) => {
-  const { data, error } = await supabase.auth.signInWithPassword({
+): Promise<HighlandAuthResponse> => {
+  const { error } = await supabase.auth.signInWithPassword({
     email,
     password,
   });
 
-  if (error) return { error: error.message };
+  if (error) {
+    return {
+      name: "AuthApiError",
+      message: error.message,
+    };
+  }
 
-  return { message: "User successfully Logged In!" };
+  return { name: "Success", message: "User successfully Logged In!" };
 };
 
 export const handleEmailRegistration = async (
@@ -27,7 +31,7 @@ export const handleEmailRegistration = async (
   email: string,
   birthday: Date | undefined,
   password: string
-) => {
+): Promise<HighlandAuthResponse> => {
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
@@ -48,13 +52,12 @@ export const handleEmailRegistration = async (
 
   if (error) {
     return {
-      name: "Auth Error",
+      name: "AuthApiError",
       message: error.message,
     };
   }
 
-  toast("User successfully created!");
-  return { name: "Success", message: "User successfully created!" };
+  return { name: "AuthApiSuccess", message: "User successfully created!" };
 };
 
 export const handleLogout = async (supabase: SupabaseClient) => {

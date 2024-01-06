@@ -25,11 +25,14 @@ export const Nav = () => {
   const handleScroll = () => {
     const currentScroll = window.scrollY;
 
-    if (currentScroll > lastScrollTop.current) {
+    if (currentScroll < 400) {
+      setIsHidden(false);
+    } else if (currentScroll > lastScrollTop.current) {
       setIsHidden(true);
     } else {
       setIsHidden(false);
     }
+
     lastScrollTop.current = currentScroll;
   };
 
@@ -39,15 +42,6 @@ export const Nav = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
-
-  useEffect(() => {
-    const getSession = async () => {
-      const session = await supabase.auth.getSession();
-      console.log(session);
-    };
-
-    getSession();
   }, []);
 
   const navStyle = {

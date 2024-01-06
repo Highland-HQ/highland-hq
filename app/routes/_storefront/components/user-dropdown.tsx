@@ -8,11 +8,11 @@ import {
   DropdownMenuTrigger,
 } from "~/components/ui/dropdown-menu";
 import { Dialog, DialogTrigger } from "~/components/ui/dialog";
-import { AuthDialogContent } from "~/components/shared/auth-dialog-content";
-import { useState } from "react";
+import { AuthDialogContent } from "~/components/shared/auth/auth-dialog-content";
+import { useMemo, useState } from "react";
 import { useOutletContext } from "@remix-run/react";
-import { SupabaseClient } from "@supabase/supabase-js";
-import { HighlandAuthResponse, handleLogout } from "~/lib/auth";
+import { Session, SupabaseClient } from "@supabase/supabase-js";
+import { handleLogout } from "~/lib/auth/auth";
 
 interface UserDropdownProps {
   triggerVariant?: ButtonProps["variant"];
@@ -24,9 +24,14 @@ export const UserDropdown = ({
   triggerVariant = "ghost",
   triggerSize = "icon",
 }: UserDropdownProps) => {
-  const { supabase } = useOutletContext<{ supabase: SupabaseClient }>();
+  const { supabase, session } = useOutletContext<{
+    supabase: SupabaseClient;
+    session: Session;
+  }>();
 
   const [isLoginModal, setIsLoginModal] = useState(false);
+
+  const isLoggedIn = useMemo(() => session != null, [session]);
 
   return (
     <Dialog>
@@ -38,24 +43,38 @@ export const UserDropdown = ({
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-56">
           <DropdownMenuGroup>
-            <DialogTrigger asChild onClick={() => setIsLoginModal(true)}>
-              <DropdownMenuItem>
-                <LogIn className="mr-2 h-4 w-4" />
-                <span>Log In</span>
-              </DropdownMenuItem>
-            </DialogTrigger>
+            {isLoggedIn ? (
+              <>
+                <DialogTrigger asChild onClick={() => setIsLoginModal(true)}>
+                  <DropdownMenuItem>
+                    <LogIn className="mr-2 h-4 w-4" />
+                    <span>Log In</span>
+                  </DropdownMenuItem>
+                </DialogTrigger>
 
-            <DropdownMenuItem onClick={() => handleLogout(supabase)}>
-              <LogOut className="mr-2 h-4 w-4" />
-              <span>Log Out</span>
-            </DropdownMenuItem>
-
-            <DialogTrigger asChild onClick={() => setIsLoginModal(false)}>
-              <DropdownMenuItem>
-                <UserPlus className="mr-2 h-4 w-4" />
-                <span>Register</span>
-              </DropdownMenuItem>
-            </DialogTrigger>
+                <DialogTrigger asChild onClick={() => setIsLoginModal(false)}>
+                  <DropdownMenuItem>
+                    <UserPlus className="mr-2 h-4 w-4" />
+                    <span>Register</span>
+                  </DropdownMenuItem>
+                </DialogTrigger>
+              </>
+            ) : (
+              <>
+                <DropdownMenuItem>
+                  <User className="mr-2 h-4 w-4" />
+                  <span>Profile Settings</span>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <User className="mr-2 h-4 w-4" />
+                  <span>Favorites</span>
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => handleLogout(supabase)}>
+                  <LogOut className="mr-2 h-4 w-4" />
+                  <span>Log Out</span>
+                </DropdownMenuItem>
+              </>
+            )}
           </DropdownMenuGroup>
         </DropdownMenuContent>
       </DropdownMenu>

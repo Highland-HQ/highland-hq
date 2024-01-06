@@ -88,7 +88,7 @@ export default function App() {
       </head>
       <body>
         <Toaster />
-        <Outlet context={{ supabase }} />
+        <Outlet context={{ supabase, session }} />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
