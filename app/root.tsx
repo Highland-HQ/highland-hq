@@ -19,6 +19,8 @@ import {
   createServerClient,
 } from "@supabase/auth-helpers-remix";
 
+import { Toaster } from "~/components/ui/sonner";
+
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: styles },
   { rel: "stylesheet", href: fonts },
@@ -85,7 +87,8 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Outlet context={supabase} />
+        <Toaster />
+        <Outlet context={{ supabase }} />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />

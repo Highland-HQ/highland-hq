@@ -1,15 +1,24 @@
-import { redirect } from "@remix-run/node";
 import { SupabaseClient } from "@supabase/supabase-js";
+import { toast } from "sonner";
+
+export type HighlandAuthResponse = {
+  name: string;
+  message: string;
+};
 
 export const handleEmailLogin = async (
   supabase: SupabaseClient,
   email: string,
   password: string
 ) => {
-  await supabase.auth.signInWithPassword({
+  const { data, error } = await supabase.auth.signInWithPassword({
     email,
     password,
   });
+
+  if (error) return { error: error.message };
+
+  return { message: "User successfully Logged In!" };
 };
 
 export const handleEmailRegistration = async (
@@ -19,7 +28,7 @@ export const handleEmailRegistration = async (
   birthday: Date | undefined,
   password: string
 ) => {
-  await supabase.auth.signUp({
+  const { data, error } = await supabase.auth.signUp({
     email,
     password,
     options: {
@@ -29,10 +38,31 @@ export const handleEmailRegistration = async (
       },
     },
   });
+
+  if (data.user && data.user.identities && data.user.identities.length === 0) {
+    return {
+      name: "AuthApiError",
+      message: "User already exists",
+    };
+  }
+
+  if (error) {
+    return {
+      name: "Auth Error",
+      message: error.message,
+    };
+  }
+
+  toast("User successfully created!");
+  return { name: "Success", message: "User successfully created!" };
 };
 
-export const handleLogout = (supabase: SupabaseClient) => {
-  supabase.auth.signOut();
+export const handleLogout = async (supabase: SupabaseClient) => {
+  const { error } = await supabase.auth.signOut();
+
+  if (error) return { error: error.message };
+
+  return { message: "User Signed Out Successfully!" };
 };
 
 // ADD OAUTH PROVIDERS

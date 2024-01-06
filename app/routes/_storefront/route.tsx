@@ -5,7 +5,6 @@ import { Outlet, useOutletContext } from "@remix-run/react";
 const StorefrontIndex = () => {
   const { supabase } = useOutletContext<{ supabase: SupabaseClient }>();
 
-  console.log(supabase);
   return (
     <>
       <Nav />

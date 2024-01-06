@@ -1,4 +1,4 @@
-import { User, UserPlus, LogIn } from "lucide-react";
+import { User, UserPlus, LogIn, LogOut } from "lucide-react";
 import { Button, ButtonProps } from "~/components/ui/button";
 import {
   DropdownMenu,
@@ -12,6 +12,7 @@ import { AuthDialogContent } from "~/components/shared/auth-dialog-content";
 import { useState } from "react";
 import { useOutletContext } from "@remix-run/react";
 import { SupabaseClient } from "@supabase/supabase-js";
+import { HighlandAuthResponse, handleLogout } from "~/lib/auth";
 
 interface UserDropdownProps {
   triggerVariant?: ButtonProps["variant"];
@@ -24,8 +25,6 @@ export const UserDropdown = ({
   triggerSize = "icon",
 }: UserDropdownProps) => {
   const { supabase } = useOutletContext<{ supabase: SupabaseClient }>();
-
-  console.log(supabase);
 
   const [isLoginModal, setIsLoginModal] = useState(false);
 
@@ -46,6 +45,11 @@ export const UserDropdown = ({
               </DropdownMenuItem>
             </DialogTrigger>
 
+            <DropdownMenuItem onClick={() => handleLogout(supabase)}>
+              <LogOut className="mr-2 h-4 w-4" />
+              <span>Log Out</span>
+            </DropdownMenuItem>
+
             <DialogTrigger asChild onClick={() => setIsLoginModal(false)}>
               <DropdownMenuItem>
                 <UserPlus className="mr-2 h-4 w-4" />
@@ -57,7 +61,12 @@ export const UserDropdown = ({
       </DropdownMenu>
 
       <AuthDialogContent
-        title={isLoginModal ? "Login To Highland" : "Create An Account"}
+        title={isLoginModal ? "Login" : "Create An Account"}
+        description={
+          isLoginModal
+            ? "Continue where you've left off!"
+            : "New Here? Let's get started."
+        }
         isLoginModal={isLoginModal}
         supabase={supabase}
       />

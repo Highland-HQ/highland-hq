@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Link } from "@remix-run/react";
+import { Link, useOutletContext } from "@remix-run/react";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -14,8 +14,11 @@ import { UserDropdown } from "./user-dropdown";
 import { StorefrontBag } from "./bag";
 
 import logo from "public/images/highland-logo-black.png";
+import { SupabaseClient } from "@supabase/supabase-js";
 
 export const Nav = () => {
+  const { supabase } = useOutletContext<{ supabase: SupabaseClient }>();
+
   const [isHidden, setIsHidden] = useState(false);
   const lastScrollTop = useRef(0);
 
@@ -36,6 +39,15 @@ export const Nav = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
+  }, []);
+
+  useEffect(() => {
+    const getSession = async () => {
+      const session = await supabase.auth.getSession();
+      console.log(session);
+    };
+
+    getSession();
   }, []);
 
   const navStyle = {
