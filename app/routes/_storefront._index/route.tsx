@@ -3,9 +3,9 @@ import { type MetaFunction } from "@remix-run/node";
 import { HomeHeroSection } from "./components/hero";
 import { HomeFeaturedSection } from "./components/featured";
 import { HomeCollectionFeature } from "./components/collection-feature";
-import { HomeMailingList } from "./components/mailing-list";
 
 import image from "public/images/image2.jpg";
+import { CategoryCards } from "./components/category-cards";
 
 export const meta: MetaFunction = () => {
   return [
@@ -19,12 +19,14 @@ export default function Index() {
     <>
       <HomeHeroSection />
       <HomeFeaturedSection />
+      <CategoryCards />
       <HomeCollectionFeature
         imageUrl={image}
         title="New Years Sale!"
         description="Check out our New Years Sale, up to 50% off on select items"
       />
-      <HomeMailingList />
+
+      {/* <HomeMailingList /> */}
     </>
   );
 }
