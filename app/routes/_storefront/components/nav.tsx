@@ -13,7 +13,6 @@ import { Search } from "lucide-react";
 import { UserDropdown } from "./user-dropdown";
 import { StorefrontBag } from "./bag";
 
-import logo from "public/images/highland-logo-black.png";
 import { SupabaseClient } from "@supabase/supabase-js";
 
 export const Nav = () => {
@@ -52,7 +51,7 @@ export const Nav = () => {
   return (
     <NavigationMenu
       style={navStyle}
-      className="flex flex-col max-w-screen py-2 gap-2 bg-background fixed w-full border-b border-border"
+      className="flex flex-col max-w-screen py-2 gap-2 bg-background fixed w-full shadow-md"
     >
       <div className="flex items-center justify-between w-full container">
         <div>
@@ -60,8 +59,8 @@ export const Nav = () => {
             <Search />
           </Button>
         </div>
-        <div>
-          <img src={logo} alt="Highland Logo" className="h-8" />
+        <div className="font-serif text-2xl font-bold tracking-wide">
+          Highland
         </div>
         <div className="flex items-center justify-end">
           <StorefrontBag />
@@ -70,25 +69,31 @@ export const Nav = () => {
       </div>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <Link to={"/"} className={navigationMenuTriggerStyle()}>
+          <Link to={"/"} className={`${navigationMenuTriggerStyle()}`}>
             Home
           </Link>
-          <Link to={"/womens"} className={navigationMenuTriggerStyle()}>
+          <Link to={"/womens"} className={`${navigationMenuTriggerStyle()}`}>
             Womens
           </Link>
-          <Link to={"/mens"} className={navigationMenuTriggerStyle()}>
+          <Link to={"/mens"} className={`${navigationMenuTriggerStyle()}`}>
             Mens
           </Link>
-          <Link to={"/collections"} className={navigationMenuTriggerStyle()}>
+          <Link
+            to={"/collections"}
+            className={`${navigationMenuTriggerStyle()}`}
+          >
             Collections
           </Link>
-          <Link to={"/accessories"} className={navigationMenuTriggerStyle()}>
+          <Link
+            to={"/accessories"}
+            className={`${navigationMenuTriggerStyle()}`}
+          >
             Accessories
           </Link>
-          <Link to={"/sale"} className={navigationMenuTriggerStyle()}>
+          <Link to={"/sale"} className={`${navigationMenuTriggerStyle()}`}>
             Sale
           </Link>
-          <Link to={"/new"} className={navigationMenuTriggerStyle()}>
+          <Link to={"/new"} className={`${navigationMenuTriggerStyle()}`}>
             New
           </Link>
         </NavigationMenuItem>

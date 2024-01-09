@@ -123,7 +123,11 @@ export const AuthDialogContent = ({
         <DialogTitle className="font-serif font-bold text-3xl">
           {title}
         </DialogTitle>
-        {description && <DialogDescription>{description}</DialogDescription>}
+        {description && (
+          <DialogDescription className="text-primary">
+            {description}
+          </DialogDescription>
+        )}
       </DialogHeader>
 
       <Separator className="mb-4" />

@@ -4,33 +4,33 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
+    --background: 29 30% 62%; /* Base color #BC9E82 as background */
+    --foreground: 29 30% 12%; /* Darker shade for readability */
 
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
+    --card: 29 30% 62%; /* Lighter shade for card backgrounds */
+    --card-foreground: 26 28% 20%; /* Darker shade for text on cards */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
+    --popover: 29 30% 62%; /* Consistent with card background */
+    --popover-foreground: 26 28% 20%; /* Consistent with card text */
 
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
+    --primary: 29 30% 12%; /* Slightly more saturated for primary elements */
+    --primary-foreground: 29 30% 85%; /* White for primary text */
 
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
+    --secondary: 26 10% 90%; /* Lighter tint for secondary elements */
+    --secondary-foreground: 26 40% 30%; /* Darker shade for secondary text */
 
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
+    --muted: 26 10% 90%; /* Soft shade for muted elements */
+    --muted-foreground: 26 30% 40%; /* Medium shade for muted text */
 
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
+    --accent: 29 30% 15%; /* Complementary blue as accent color */
+    --accent-foreground: 0 0% 100%; /* White for accent text */
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 84.2% 45.2%; /* Retaining the original red for destructive */
+    --destructive-foreground: 0 0% 100%; /* White for destructive text */
 
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 10% 3.9%;
+    --border: 29 30% 12%; /* Soft border color */
+    --input: 29 30% 50%; /* Light color for input fields */
+    --ring: 29 30% 20%; /* Slightly darker for focus ring */
 
     --radius: 0.5rem;
   }

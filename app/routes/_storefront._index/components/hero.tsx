@@ -45,6 +45,7 @@ const heroCarouselContent: HeroCarouselContent[] = [
   },
 ];
 
+// WE MIGHT USE THIS COMPONENT LATER, BUT FOR NOW IT'S IRRELEVANT :THUMBS_DOWN:
 export const HomeHeroSection = () => {
   const [api, setApi] = useState<CarouselApi>();
   const [_, setCount] = useState(0);
