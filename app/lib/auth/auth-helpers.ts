@@ -1,5 +1,5 @@
 export const validateName = (name: string) => {
-  const regex = /^[a-zA-Z\s]+$/;
+  const regex = /^[a-zA-Z\s-]+$/;
   return regex.test(name);
 };
 
