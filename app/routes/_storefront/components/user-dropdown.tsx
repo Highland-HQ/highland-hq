@@ -1,4 +1,4 @@
-import { User, UserPlus, LogIn, LogOut } from "lucide-react";
+import { User, UserPlus, LogIn, LogOut, Heart } from "lucide-react";
 import { Button, ButtonProps } from "~/components/ui/button";
 import {
   DropdownMenu,
@@ -43,7 +43,7 @@ export const UserDropdown = ({
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-56">
           <DropdownMenuGroup>
-            {isLoggedIn ? (
+            {!isLoggedIn ? (
               <>
                 <DialogTrigger asChild onClick={() => setIsLoginModal(true)}>
                   <DropdownMenuItem>
@@ -66,7 +66,7 @@ export const UserDropdown = ({
                   <span>Profile Settings</span>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <User className="mr-2 h-4 w-4" />
+                  <Heart className="mr-2 h-4 w-4" />
                   <span>Favorites</span>
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => handleLogout(supabase)}>

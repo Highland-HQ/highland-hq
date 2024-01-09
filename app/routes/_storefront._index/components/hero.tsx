@@ -84,7 +84,7 @@ export const HomeHeroSection = () => {
     const scrollPosition = window.scrollY;
 
     const newOffsets = heroCarouselContent.map((_, index) => {
-      return scrollPosition * 0.15 + scrollPosition * 0.1 * index;
+      return scrollPosition * 0.2 + scrollPosition * 0.1 * index;
     });
 
     setParallaxOffsets(newOffsets);

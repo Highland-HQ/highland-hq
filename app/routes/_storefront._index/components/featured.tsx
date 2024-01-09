@@ -11,7 +11,7 @@ export const HomeFeaturedSection = () => {
   return (
     <section className="container my-12">
       <h2 className="font-serif text-4xl font-bold mb-4 text-center">
-        Popular Products
+        Best Sellers
       </h2>
       <Tabs
         defaultValue="womens"
