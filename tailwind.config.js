@@ -19,11 +19,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ["Montserrat", "system-ui", "sans-serif"],
-        playfair: ["Playfair Display", "serif"],
-        pt: ["PT Serif"],
-        cinzel: ["Cinzel"],
-        almarai: ["Almarai"],
-        overlock: ["Overlock SC"],
+        serif: ["PT Serif", "serif"],
       },
       colors: {
         border: "hsl(var(--border))",

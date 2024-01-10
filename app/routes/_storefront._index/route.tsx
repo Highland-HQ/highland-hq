@@ -1,6 +1,6 @@
 import { type MetaFunction } from "@remix-run/node";
 
-import { HomeFeaturedSection } from "./components/featured";
+import { HomeBestSellersSection } from "./components/best-sellers";
 import { HomeCollectionFeature } from "./components/collection-feature";
 
 import image from "public/images/image2.jpg";
@@ -42,7 +42,7 @@ export default function Index() {
         title={`Shop Our ${currentMonth} Collection`}
         description="Explore our January Collection and start the year with fresh, inspired selections. Perfect for any style!"
       />
-      <HomeFeaturedSection />
+      <HomeBestSellersSection />
       <CategoryCards />
       <HomeCollectionFeature
         imageUrl={image}
@@ -53,18 +53,6 @@ export default function Index() {
         All this shit at the end is here so i can test the parallax btw (i made
         new parallax code)
       </p>
-
-      <Button variant="secondary">Test</Button>
-      <CategoryCards />
-      <CategoryCards />
-      <CategoryCards />
-      <CategoryCards />
-      <CategoryCards />
-      <CategoryCards />
-      <CategoryCards />
-      <CategoryCards />
-      <CategoryCards />
-
       {/* <HomeMailingList /> */}
     </>
   );

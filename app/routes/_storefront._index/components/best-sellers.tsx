@@ -7,7 +7,7 @@ import image2 from "public/images/products/product2.jpg";
 import image3 from "public/images/products/product3.jpg";
 import image4 from "public/images/products/product4.jpg";
 
-export const HomeFeaturedSection = () => {
+export const HomeBestSellersSection = () => {
   return (
     <section className="container my-12">
       <h2 className="font-serif text-4xl font-bold mb-4 text-center">
@@ -24,7 +24,7 @@ export const HomeFeaturedSection = () => {
           </TabsList>
         </div>
         <TabsContent value="womens">
-          <div className="grid grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
             <div>
               <img
                 src={image1}
@@ -220,71 +220,7 @@ export const HomeFeaturedSection = () => {
           </div>
         </TabsContent>
         <TabsContent value="mens">
-          <div className="grid grid-cols-4 gap-4">
-            <div>
-              <img
-                src={image3}
-                alt="Image Here"
-                className="w-full aspect-square object-cover"
-              />
-              <div className="flex justify-between mt-2">
-                <div>
-                  <h3 className="font-semibold">Product Name</h3>
-                  <p className="text-secondary-foreground">$12.22</p>
-                </div>
-                <Button variant="link" className="p-0 hover:text-destructive">
-                  <Heart size={24} />
-                </Button>
-              </div>
-            </div>
-            <div>
-              <img
-                src={image1}
-                alt="Image Here"
-                className="w-full aspect-square object-cover"
-              />
-              <div className="flex justify-between mt-2">
-                <div>
-                  <h3 className="font-semibold">Product Name</h3>
-                  <p className="text-secondary-foreground">$12.22</p>
-                </div>
-                <Button variant="link" className="p-0 hover:text-destructive">
-                  <Heart size={24} />
-                </Button>
-              </div>
-            </div>
-            <div>
-              <img
-                src={image3}
-                alt="Image Here"
-                className="w-full aspect-square object-cover"
-              />
-              <div className="flex justify-between mt-2">
-                <div>
-                  <h3 className="font-semibold">Product Name</h3>
-                  <p className="text-secondary-foreground">$12.22</p>
-                </div>
-                <Button variant="link" className="p-0 hover:text-destructive">
-                  <Heart size={24} />
-                </Button>
-              </div>
-            </div>
-            <div>
-              <img
-                src={image2}
-                alt="Image Here"
-                className="w-full aspect-square object-cover"
-              />
-              <div className="flex justify-between mt-2">
-                <div>
-                  <h3 className="font-semibold">Product Name</h3>
-                  <p className="text-secondary-foreground">$12.22</p>
-                </div>
-                <Button variant="link" className="p-0 hover:text-destructive">
-                  <Heart size={24} />
-                </Button>
-              </div>
-            </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
             <div>
               <img
                 src={image1}
@@ -335,7 +271,135 @@ export const HomeFeaturedSection = () => {
             </div>
             <div>
               <img
+                src={image4}
+                alt="Image Here"
+                className="w-full aspect-square object-cover"
+              />
+              <div className="flex justify-between mt-2">
+                <div>
+                  <h3 className="font-semibold">Product Name</h3>
+                  <p className="text-secondary-foreground">$12.22</p>
+                </div>
+                <Button variant="link" className="p-0 hover:text-destructive">
+                  <Heart size={24} />
+                </Button>
+              </div>
+            </div>
+            <div>
+              <img
+                src={image1}
+                alt="Image Here"
+                className="w-full aspect-square object-cover"
+              />
+              <div className="flex justify-between mt-2">
+                <div>
+                  <h3 className="font-semibold">Product Name</h3>
+                  <p className="text-secondary-foreground">$12.22</p>
+                </div>
+                <Button variant="link" className="p-0 hover:text-destructive">
+                  <Heart size={24} />
+                </Button>
+              </div>
+            </div>
+            <div>
+              <img
+                src={image2}
+                alt="Image Here"
+                className="w-full aspect-square object-cover"
+              />
+              <div className="flex justify-between mt-2">
+                <div>
+                  <h3 className="font-semibold">Product Name</h3>
+                  <p className="text-secondary-foreground">$12.22</p>
+                </div>
+                <Button variant="link" className="p-0 hover:text-destructive">
+                  <Heart size={24} />
+                </Button>
+              </div>
+            </div>
+            <div>
+              <img
                 src={image3}
+                alt="Image Here"
+                className="w-full aspect-square object-cover"
+              />
+              <div className="flex justify-between mt-2">
+                <div>
+                  <h3 className="font-semibold">Product Name</h3>
+                  <p className="text-secondary-foreground">$12.22</p>
+                </div>
+                <Button variant="link" className="p-0 hover:text-destructive">
+                  <Heart size={24} />
+                </Button>
+              </div>
+            </div>
+            <div>
+              <img
+                src={image4}
+                alt="Image Here"
+                className="w-full aspect-square object-cover"
+              />
+              <div className="flex justify-between mt-2">
+                <div>
+                  <h3 className="font-semibold">Product Name</h3>
+                  <p className="text-secondary-foreground">$12.22</p>
+                </div>
+                <Button variant="link" className="p-0 hover:text-destructive">
+                  <Heart size={24} />
+                </Button>
+              </div>
+            </div>
+            <div>
+              <img
+                src={image1}
+                alt="Image Here"
+                className="w-full aspect-square object-cover"
+              />
+              <div className="flex justify-between mt-2">
+                <div>
+                  <h3 className="font-semibold">Product Name</h3>
+                  <p className="text-secondary-foreground">$12.22</p>
+                </div>
+                <Button variant="link" className="p-0 hover:text-destructive">
+                  <Heart size={24} />
+                </Button>
+              </div>
+            </div>
+            <div>
+              <img
+                src={image2}
+                alt="Image Here"
+                className="w-full aspect-square object-cover"
+              />
+              <div className="flex justify-between mt-2">
+                <div>
+                  <h3 className="font-semibold">Product Name</h3>
+                  <p className="text-secondary-foreground">$12.22</p>
+                </div>
+                <Button variant="link" className="p-0 hover:text-destructive">
+                  <Heart size={24} />
+                </Button>
+              </div>
+            </div>
+            <div>
+              <img
+                src={image3}
+                alt="Image Here"
+                className="w-full aspect-square object-cover"
+              />
+              <div className="flex justify-between mt-2">
+                <div>
+                  <h3 className="font-semibold">Product Name</h3>
+                  <p className="text-secondary-foreground">$12.22</p>
+                </div>
+                <Button variant="link" className="p-0 hover:text-destructive">
+                  <Heart size={24} />
+                </Button>
+              </div>
+            </div>
+            <div>
+              <img
+                src={image4}
                 alt="Image Here"
                 className="w-full aspect-square object-cover"
               />

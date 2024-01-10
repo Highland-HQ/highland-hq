@@ -59,7 +59,7 @@ export const StorefrontBag = () => {
         <SheetTitle>Your Bag</SheetTitle>
         <SheetDescription>
           Payments processed securely via
-          <Link className="text-accent-foreground" to="https://stripe.com/">
+          <Link className="text-primary font-bold" to="https://stripe.com/">
             {" "}
             Stripe
           </Link>

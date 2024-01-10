@@ -14,23 +14,9 @@ import { UserDropdown } from "./user-dropdown";
 import { StorefrontBag } from "./bag";
 import { StorefrontMobileMenu } from "./mobile-menu";
 import { links } from "./nav-data";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "~/components/ui/select";
 
 export const Nav = () => {
   const [isHidden, setIsHidden] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
 
   const lastScrollTop = useRef(0);
 
@@ -61,12 +47,10 @@ export const Nav = () => {
     transition: "top 0.5s ease-in-out",
   };
 
-  const [font, setFont] = useState("playfair");
-
   return (
     <NavigationMenu
       style={navStyle}
-      className="flex flex-col z-20 max-w-screen py-2 gap-2 bg-background fixed w-full shadow-md"
+      className="flex flex-col z-50 py-2 gap-2 bg-background fixed max-w-screen w-full shadow-md"
     >
       <div className="flex items-center justify-between w-full px-2 md:container">
         <div>
@@ -76,11 +60,9 @@ export const Nav = () => {
             <Search />
           </Button>
         </div>
-        <div className="font-pt text-2xl font-bold">HIGHLAND</div>
-        <div className="font-overlock text-2xl font-bold">HIGHLAND</div>
-        <div className="font-cinzel text-2xl font-bold">HIGHLAND</div>
-        <div className="font-playfair text-2xl font-bold">HIGHLAND</div>
-        <div className="font-almarai text-2xl font-bold">HIGHLAND</div>
+        <div className="font-serif text-2xl font-bold tracking-wide">
+          HIGHLAND
+        </div>
         <div className="flex items-center justify-end">
           <StorefrontBag />
           <UserDropdown />
@@ -91,7 +73,7 @@ export const Nav = () => {
         <NavigationMenuItem>
           {links.map(({ title, link }) => (
             <Link to={link} className={`${navigationMenuTriggerStyle()}`}>
-              {title}
+              {title.toUpperCase()}
             </Link>
           ))}
         </NavigationMenuItem>

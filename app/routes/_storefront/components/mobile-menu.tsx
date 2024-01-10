@@ -29,7 +29,7 @@ export const StorefrontMobileMenu = () => {
             to={link}
             className={`${navigationMenuTriggerStyle()} bg-primary text-primary-foreground w-full`}
           >
-            {title}
+            {title.toUpperCase()}
           </Link>
         ))}
       </SheetContent>

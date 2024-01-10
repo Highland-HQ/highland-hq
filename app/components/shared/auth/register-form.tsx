@@ -30,7 +30,7 @@ export const RegisterForm = ({
 }: LoginFormProps) => {
   return (
     <div className="grid items-start gap-4">
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="grid gap-2 col-span-1">
           <Label htmlFor="name">First Name*</Label>
           <Input

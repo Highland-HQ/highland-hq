@@ -28,6 +28,7 @@ import {
   validateName,
   validatePassword,
 } from "~/lib/auth/auth-helpers";
+import { Link } from "@remix-run/react";
 
 interface AuthDialogContentProps {
   title: string;
@@ -155,7 +156,16 @@ export const AuthDialogContent = ({
           />
         )}
 
-        <div className="flex justify-end items-center">
+        <div className="flex justify-between items-center">
+          {isLoginModal ? (
+            <Link to="/reset-password">
+              <Button variant="link" size="sm" className="mt-4">
+                <span>Forgot Password?</span>
+              </Button>
+            </Link>
+          ) : (
+            <div />
+          )}
           <Button type="submit" size="sm" className="mt-4">
             <span>Submit</span>
             <ArrowRight className="w-6 h-6" />
@@ -165,7 +175,7 @@ export const AuthDialogContent = ({
 
       <Separator className="my-2" />
 
-      <DialogFooter className="flex flex-col">
+      <DialogFooter className="flex flex-col gap-4">
         <OAuthButtonGroup />
       </DialogFooter>
     </DialogContent>
