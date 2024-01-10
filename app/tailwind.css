@@ -25,11 +25,11 @@
     --accent: 29 30% 15%; /* Complementary blue as accent color */
     --accent-foreground: 0 0% 100%; /* White for accent text */
 
-    --destructive: 0 84.2% 45.2%; /* Retaining the original red for destructive */
+    --destructive: 0 84.2% 28.2%; /* Retaining the original red for destructive */
     --destructive-foreground: 0 0% 100%; /* White for destructive text */
 
-    --border: 29 30% 12%; /* Soft border color */
-    --input: 29 30% 50%; /* Light color for input fields */
+    --border: 29 30% 58%; /* Soft border color */
+    --input: 29 30% 35%; /* Light color for input fields */
     --ring: 29 30% 20%; /* Slightly darker for focus ring */
 
     --radius: 0.5rem;

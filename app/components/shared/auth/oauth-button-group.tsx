@@ -5,7 +5,7 @@ export const OAuthButtonGroup = () => {
     <>
       <Button className="w-full">
         <svg
-          className="w-4 h-4 mr-2 fill-current text-white"
+          className="w-4 h-4 mr-2 fill-current text-inherit"
           role="img"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
@@ -17,7 +17,7 @@ export const OAuthButtonGroup = () => {
       </Button>
       <Button className="w-full" variant="outline">
         <svg
-          className="w-4 h-4 mr-2 fill-current text-black"
+          className="w-4 h-4 mr-2 fill-current text-inherit"
           role="img"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"

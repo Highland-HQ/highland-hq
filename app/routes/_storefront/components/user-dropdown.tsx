@@ -48,14 +48,14 @@ export const UserDropdown = ({
                 <DialogTrigger asChild onClick={() => setIsLoginModal(true)}>
                   <DropdownMenuItem>
                     <LogIn className="mr-2 h-4 w-4" />
-                    <span>Log In</span>
+                    <span>Sign In</span>
                   </DropdownMenuItem>
                 </DialogTrigger>
 
                 <DialogTrigger asChild onClick={() => setIsLoginModal(false)}>
                   <DropdownMenuItem>
                     <UserPlus className="mr-2 h-4 w-4" />
-                    <span>Register</span>
+                    <span>Sign Up</span>
                   </DropdownMenuItem>
                 </DialogTrigger>
               </>

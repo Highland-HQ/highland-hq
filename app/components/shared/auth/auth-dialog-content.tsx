@@ -109,7 +109,7 @@ export const AuthDialogContent = ({
       <DialogHeader>
         {authResponse && (
           <Alert
-            className="mt-2"
+            className="my-4"
             variant={
               authResponse.name === "Success" ? "default" : "destructive"
             }
