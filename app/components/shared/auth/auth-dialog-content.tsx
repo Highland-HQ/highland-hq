@@ -31,8 +31,10 @@ import {
 import { Link } from "@remix-run/react";
 import {
   DrawerContent,
+  DrawerDescription,
   DrawerFooter,
   DrawerHeader,
+  DrawerTitle,
 } from "~/components/ui/drawer";
 import useMediaQuery from "~/hooks/useMediaQuery";
 import { toast } from "sonner";
@@ -127,28 +129,11 @@ export const AuthDialogContent = ({
   return (
     <ResponsiveContent isMobile={isMobile}>
       <ResponsiveHeader isMobile={isMobile}>
-        {/* {authResponse && (
-          <Alert
-            className="my-4"
-            variant={
-              authResponse.name === "Success" ? "default" : "destructive"
-            }
-          >
-            <AlertCircle className="h-4 w-4" />
-            <AlertTitle>
-              {authResponse.name === "Success" ? "Success" : "Error"}
-            </AlertTitle>
-            <AlertDescription>{authResponse.message}</AlertDescription>
-          </Alert>
-        )} */}
-
-        <DialogTitle className="font-serif font-bold text-3xl">
-          {title}
-        </DialogTitle>
+        <ResponsiveTitle isMobile={isMobile}>{title}</ResponsiveTitle>
         {description && (
-          <DialogDescription className="text-primary">
+          <ResponsiveDescription isMobile={isMobile}>
             {description}
-          </DialogDescription>
+          </ResponsiveDescription>
         )}
       </ResponsiveHeader>
 
@@ -230,10 +215,34 @@ const ResponsiveHeader = ({ isMobile, children }: ResponsiveComponentProps) => {
 };
 
 const ResponsiveFooter = ({ isMobile, children }: ResponsiveComponentProps) => {
-  // Assuming Drawer has similar components like DrawerFooter
   return isMobile ? (
     <DrawerFooter className="px-0">{children}</DrawerFooter>
   ) : (
     <DialogFooter>{children}</DialogFooter>
+  );
+};
+
+const ResponsiveTitle = ({ isMobile, children }: ResponsiveComponentProps) => {
+  return isMobile ? (
+    <DrawerTitle className="font-serif font-bold text-2xl text-left">
+      {children}
+    </DrawerTitle>
+  ) : (
+    <DialogTitle className="font-serif font-bold text-3xl">
+      {children}
+    </DialogTitle>
+  );
+};
+
+const ResponsiveDescription = ({
+  isMobile,
+  children,
+}: ResponsiveComponentProps) => {
+  return isMobile ? (
+    <DrawerDescription className="text-primary text-left">
+      {children}
+    </DrawerDescription>
+  ) : (
+    <DialogDescription>{children}</DialogDescription>
   );
 };

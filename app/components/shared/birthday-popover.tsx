@@ -18,7 +18,7 @@ export const BirthdayPopover = ({ date, setDate }: BirthdayPopoverProps) => {
       <PopoverTrigger asChild>
         <Button variant="outline">
           <CalendarIcon className="mr-2 h-4 w-4" />
-          {date ? format(date, "PPP") : <span>Pick a date</span>}
+          {date ? format(date, "MM/dd/yyyy") : <span>Pick a date</span>}
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto bg-background border border-border rounded-md mt-2 shadow-md dark:shadow-none">
