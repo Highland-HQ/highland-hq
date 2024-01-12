@@ -20,6 +20,7 @@ export const LoginForm = ({
       <div className="grid gap-2">
         <Label htmlFor="email">Email*</Label>
         <Input
+          required
           id="email"
           type="email"
           value={email}
@@ -30,6 +31,7 @@ export const LoginForm = ({
       <div className="grid gap-2">
         <Label htmlFor="password">Password*</Label>
         <Input
+          required
           id="password"
           type="password"
           value={password}

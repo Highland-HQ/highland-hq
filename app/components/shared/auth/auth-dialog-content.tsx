@@ -1,5 +1,5 @@
 import { SupabaseClient } from "@supabase/supabase-js";
-import { FormEvent, ReactNode, useState } from "react";
+import { FormEvent, ReactNode, useEffect, useState } from "react";
 import {
   DialogTitle,
   DialogContent,
@@ -35,6 +35,7 @@ import {
   DrawerHeader,
 } from "~/components/ui/drawer";
 import useMediaQuery from "~/hooks/useMediaQuery";
+import { toast } from "sonner";
 
 interface AuthDialogContentProps {
   title: string;
@@ -80,7 +81,7 @@ export const AuthDialogContent = ({
       return;
     }
 
-    if (!validatePassword(password)) {
+    if (!isLoginModal && !validatePassword(password)) {
       setAuthResponse({
         name: "SubmissionError",
         message:
@@ -99,7 +100,12 @@ export const AuthDialogContent = ({
 
     let response;
     if (isLoginModal) {
+      console.log("here");
       response = await handleEmailLogin(supabase, email, password);
+
+      console.log("here");
+
+      toast(response.message, { dismissible: true, position: "bottom-center" });
     } else {
       response = await handleEmailRegistration(
         supabase,
@@ -111,12 +117,17 @@ export const AuthDialogContent = ({
     }
 
     setAuthResponse(response);
+    toast(response.message, { dismissible: true, position: "bottom-center" });
   };
+
+  useEffect(() => {
+    console.log(authResponse);
+  }, [authResponse]);
 
   return (
     <ResponsiveContent isMobile={isMobile}>
       <ResponsiveHeader isMobile={isMobile}>
-        {authResponse && (
+        {/* {authResponse && (
           <Alert
             className="my-4"
             variant={
@@ -124,10 +135,12 @@ export const AuthDialogContent = ({
             }
           >
             <AlertCircle className="h-4 w-4" />
-            <AlertTitle>Error While Authenticating</AlertTitle>
+            <AlertTitle>
+              {authResponse.name === "Success" ? "Success" : "Error"}
+            </AlertTitle>
             <AlertDescription>{authResponse.message}</AlertDescription>
           </Alert>
-        )}
+        )} */}
 
         <DialogTitle className="font-serif font-bold text-3xl">
           {title}
@@ -167,7 +180,7 @@ export const AuthDialogContent = ({
         <div className="flex flex-col md:flex-row justify-between items-center">
           {isLoginModal ? (
             <Link to="/reset-password">
-              <Button variant="link" size="sm" className="mt-4">
+              <Button type="button" variant="link" size="sm" className="mt-4">
                 <span>Forgot Password?</span>
               </Button>
             </Link>
