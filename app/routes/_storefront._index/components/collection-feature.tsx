@@ -25,7 +25,7 @@ export const HomeCollectionFeature = ({
 
       <div className="absolute top-0 left-0 w-full h-full bg-black/60 flex flex-col justify-center items-center">
         <div className="mx-2 sm:container flex flex-col items-center justify-center text-center">
-          <h1 className="flex font-serif font-extrabold text-primary-foreground text-2xl sm:text-4xl md:text-6xl">
+          <h1 className="flex font-serif font-extrabold text-primary-foreground text-4xl sm:text-4xl md:text-6xl">
             {title}
           </h1>
           {description && (

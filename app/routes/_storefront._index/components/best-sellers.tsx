@@ -10,7 +10,7 @@ import image4 from "public/images/products/product4.jpg";
 export const HomeBestSellersSection = () => {
   return (
     <section className="container my-12">
-      <h2 className="font-serif text-4xl font-bold mb-4 text-center">
+      <h2 className="font-serif text-2xl md:text-4xl font-bold mb-4 text-center">
         Best Sellers
       </h2>
       <Tabs

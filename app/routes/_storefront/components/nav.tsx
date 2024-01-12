@@ -50,7 +50,7 @@ export const Nav = () => {
   return (
     <NavigationMenu
       style={navStyle}
-      className="flex flex-col z-50 py-2 gap-2 bg-background fixed max-w-screen w-full shadow-md"
+      className="flex flex-col z-[100] py-2 gap-2 bg-background fixed max-w-screen w-full shadow-md"
     >
       <div className="flex items-center justify-between w-full px-2 md:container">
         <div>
@@ -72,7 +72,11 @@ export const Nav = () => {
       <NavigationMenuList className="hidden md:block">
         <NavigationMenuItem>
           {links.map(({ title, link }) => (
-            <Link to={link} className={`${navigationMenuTriggerStyle()}`}>
+            <Link
+              key={title}
+              to={link}
+              className={`${navigationMenuTriggerStyle()}`}
+            >
               {title.toUpperCase()}
             </Link>
           ))}

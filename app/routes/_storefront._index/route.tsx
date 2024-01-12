@@ -39,7 +39,7 @@ export default function Index() {
     <>
       <HomeCollectionFeature
         imageUrl={image}
-        title={`Shop Our ${currentMonth} Collection`}
+        title={`${currentMonth} Collection`}
         description="Explore our January Collection and start the year with fresh, inspired selections. Perfect for any style!"
       />
       <HomeBestSellersSection />

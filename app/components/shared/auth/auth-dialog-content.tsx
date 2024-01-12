@@ -1,5 +1,5 @@
 import { SupabaseClient } from "@supabase/supabase-js";
-import { FormEvent, useState } from "react";
+import { FormEvent, ReactNode, useState } from "react";
 import {
   DialogTitle,
   DialogContent,
@@ -29,6 +29,12 @@ import {
   validatePassword,
 } from "~/lib/auth/auth-helpers";
 import { Link } from "@remix-run/react";
+import {
+  DrawerContent,
+  DrawerFooter,
+  DrawerHeader,
+} from "~/components/ui/drawer";
+import useMediaQuery from "~/hooks/useMediaQuery";
 
 interface AuthDialogContentProps {
   title: string;
@@ -52,6 +58,8 @@ export const AuthDialogContent = ({
   const [authResponse, setAuthResponse] = useState<HighlandAuthResponse | null>(
     null
   );
+
+  const isMobile = useMediaQuery("(max-width: 768px)");
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -106,8 +114,8 @@ export const AuthDialogContent = ({
   };
 
   return (
-    <DialogContent>
-      <DialogHeader>
+    <ResponsiveContent isMobile={isMobile}>
+      <ResponsiveHeader isMobile={isMobile}>
         {authResponse && (
           <Alert
             className="my-4"
@@ -129,7 +137,7 @@ export const AuthDialogContent = ({
             {description}
           </DialogDescription>
         )}
-      </DialogHeader>
+      </ResponsiveHeader>
 
       <Separator className="mb-4" />
 
@@ -156,7 +164,7 @@ export const AuthDialogContent = ({
           />
         )}
 
-        <div className="flex justify-between items-center">
+        <div className="flex flex-col md:flex-row justify-between items-center">
           {isLoginModal ? (
             <Link to="/reset-password">
               <Button variant="link" size="sm" className="mt-4">
@@ -166,7 +174,7 @@ export const AuthDialogContent = ({
           ) : (
             <div />
           )}
-          <Button type="submit" size="sm" className="mt-4">
+          <Button type="submit" size="sm" className="mt-4 w-full md:w-auto">
             <span>Submit</span>
             <ArrowRight className="w-6 h-6" />
           </Button>
@@ -175,9 +183,44 @@ export const AuthDialogContent = ({
 
       <Separator className="my-2" />
 
-      <DialogFooter className="flex flex-col gap-4">
-        <OAuthButtonGroup />
-      </DialogFooter>
-    </DialogContent>
+      <ResponsiveFooter isMobile={isMobile}>
+        <div className="grid gap-y-4 w-full">
+          <OAuthButtonGroup />
+        </div>
+      </ResponsiveFooter>
+    </ResponsiveContent>
+  );
+};
+
+interface ResponsiveComponentProps {
+  isMobile: boolean;
+  children: ReactNode;
+}
+
+const ResponsiveContent = ({
+  isMobile,
+  children,
+}: ResponsiveComponentProps) => {
+  return isMobile ? (
+    <DrawerContent className="px-4">{children}</DrawerContent>
+  ) : (
+    <DialogContent>{children}</DialogContent>
+  );
+};
+
+const ResponsiveHeader = ({ isMobile, children }: ResponsiveComponentProps) => {
+  return isMobile ? (
+    <DrawerHeader>{children}</DrawerHeader>
+  ) : (
+    <DialogHeader>{children}</DialogHeader>
+  );
+};
+
+const ResponsiveFooter = ({ isMobile, children }: ResponsiveComponentProps) => {
+  // Assuming Drawer has similar components like DrawerFooter
+  return isMobile ? (
+    <DrawerFooter className="px-0">{children}</DrawerFooter>
+  ) : (
+    <DialogFooter>{children}</DialogFooter>
   );
 };
